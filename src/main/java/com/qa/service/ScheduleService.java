@@ -22,7 +22,7 @@ public class ScheduleService {
 	}
 
 	/* create
-	 * this method creates a new flight entry in the database
+	 * this method creates a new [flight] entry in the database
 	 */
 	public Schedule createFlight(Schedule flight) {
 		return this.repo.save(flight);
@@ -30,7 +30,7 @@ public class ScheduleService {
 
 	
 	/* get all
-	 * this method returns all flight in the database
+	 * this method returns all [flights] entries in the database
 	 */
 	public List<Schedule> getAllFlights() {
 		return this.repo.findAll();
@@ -38,8 +38,8 @@ public class ScheduleService {
 
 	
 	/* get by flightNum
-	 * this method return a specific flight when searched by flight
-	 * number if said flight does not exist, an exception is thrown
+	 * this method returns a specific flight when searched using flight
+	 * number, if said flight does not exist, an exception is thrown
 	 */
 	public Schedule getByflightNum(Integer id) {
 		Optional<Schedule> opFlightNum = this.repo.findById(id);
@@ -76,7 +76,7 @@ public class ScheduleService {
 
 	
 	/* delete
-	 * this method deletes a flight entry from the database, cannot be undone.
+	 * this method deletes a [flight] entry from the database, cannot be undone.
 	 */	
 	public boolean deleteFlight(Integer id) {
 		this.repo.deleteById(id);
