@@ -21,8 +21,8 @@ public class ScheduleService {
 		this.repo = repo;
 	}
 
-	/*
-	 * create this method creates a new flight entry in the database
+	/* create
+	 * this method creates a new flight entry in the database
 	 */
 	public Schedule createFlight(Schedule flight) {
 		return this.repo.save(flight);
@@ -30,15 +30,15 @@ public class ScheduleService {
 
 	
 	/* get all
-	 *  this method returns all flight in the database
+	 * this method returns all flight in the database
 	 */
 	public List<Schedule> getAllFlights() {
 		return this.repo.findAll();
 	}
 
 	
-	/*
-	 * get by flightNum this method return a specific flight when searched by flight
+	/* get by flightNum
+	 * this method return a specific flight when searched by flight
 	 * number if said flight does not exist, an exception is thrown
 	 */
 	public Schedule getByflightNum(Integer id) {
