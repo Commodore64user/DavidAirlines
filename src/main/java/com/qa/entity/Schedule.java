@@ -1,6 +1,6 @@
 package com.qa.entity;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +17,26 @@ public class Schedule {
 	
 	private String origin;
 	private String destination;
-	private Time departure;
+	private LocalTime departure;
 	
-	public Schedule(String origin, String destination, Time departure) {
+	public Schedule() {}
+	
+	public Schedule(String origin, String destination, LocalTime departure) {
 		super();
 		this.origin = origin;
 		this.destination = destination;
 		this.departure = departure;
 	}
+	
+	public Schedule(int flightNum, String origin, String destination, LocalTime departure) {
+		super();
+		this.flingtNum = flightNum;
+		this.origin = origin;
+		this.destination = destination;
+		this.departure = departure;
+	}
+	
+	
 	public int getFlingtNum() {
 		return flingtNum;
 	}
@@ -43,11 +55,12 @@ public class Schedule {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public Time getDeparture() {
+	public LocalTime getDeparture() {
 		return departure;
 	}
-	public void setDeparture(Time departure) {
+	public void setDeparture(LocalTime departure) {
 		this.departure = departure;
+		
 	}
 	@Override
 	public String toString() {
