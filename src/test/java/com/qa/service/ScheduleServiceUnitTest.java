@@ -18,7 +18,7 @@ import com.qa.repo.ScheduleRepo;
 
 @SpringBootTest
 public class ScheduleServiceUnitTest {
-	
+
 	@Autowired
 	private ScheduleService service;
 
@@ -39,18 +39,18 @@ public class ScheduleServiceUnitTest {
 	}
 
 	@Test
-	void getAllTest() throws Exception{
+	void getAllTest() {
 		// Given
 		List<Schedule> schedule = new ArrayList<>();
 		schedule.add(new Schedule(1, "London", "Glasgow", LocalTime.of(9, 10)));
 		schedule.add(new Schedule(2, "Aberdeen", "Belfast", LocalTime.of(11, 55)));
 		schedule.add(new Schedule(3, "Cardiff", "Manchester", LocalTime.of(15, 00)));
 		// When
-		
+		Mockito.when(this.repo.findAll()).thenReturn(schedule);
 		// Then
-		
+		assertThat(this.service.getAllFlights()).isEqualTo(schedule);
 		// Verify
-		
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 
 	@Test
@@ -81,6 +81,36 @@ public class ScheduleServiceUnitTest {
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyInt());
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Schedule.class));
+	}
+
+	@Test
+	void updateDelayedFlightTest() {
+		// Given
+		int flightNum = 1;
+		Schedule flightSaved = new Schedule(1, "London", "Glasgow", LocalTime.of(9, 10));
+		Schedule flightUpdate = new Schedule("London", "Glasgow", LocalTime.of(10, 15));
+		Schedule actualFlightUpdate = new Schedule(1, "London", "Glasgow", LocalTime.of(10, 15));
+		// When
+		Mockito.when(this.repo.findById(flightNum)).thenReturn(Optional.of(flightSaved));
+		Mockito.when(this.repo.save(actualFlightUpdate)).thenReturn(actualFlightUpdate);
+		// Then
+		assertThat(this.service.updateSchedule(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
+		// Verify
+		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyInt());
+		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Schedule.class));
+	}
+	
+	@Test
+	void deleteTest() {
+		// Given
+		int flightNum = 1;
+		// When
+		Mockito.when(this.repo.existsById(flightNum)).thenReturn(false);
+		// Then
+		assertThat(this.service.deleteFlight(flightNum)).isTrue();
+		//Verify
+		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.anyInt());
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(Mockito.anyInt());
 	}
 
 }
