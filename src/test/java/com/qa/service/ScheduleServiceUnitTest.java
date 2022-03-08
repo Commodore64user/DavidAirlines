@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,11 @@ public class ScheduleServiceUnitTest {
 
 	@MockBean
 	private ScheduleRepo repo;
-
+	
+	/* TEST FOR CREATE FLIGHT
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
 	void createFlightTest() {
 		// Given
@@ -38,8 +43,13 @@ public class ScheduleServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Schedule.class));
 	}
 
+	
+	/* TEST FOR GET ALL FLIGHTS
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
-	void getAllTest() {
+	void getAllFlightsTest() {
 		// Given
 		List<Schedule> schedule = new ArrayList<>();
 		schedule.add(new Schedule(1, "London", "Glasgow", LocalTime.of(9, 10)));
@@ -53,6 +63,11 @@ public class ScheduleServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 
+	
+	/* TEST FOR GET BY FLIGHT NUMBER
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
 	void getByflightNumTest() {
 		// Given
@@ -66,23 +81,33 @@ public class ScheduleServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyInt());
 	}
 
+	
+	/* TEST FOR UPDATE SCHEDULED FLIGHT
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
 	void updateScheduleTest() {
 		// Given
 		int flightNum = 1;
 		Schedule flightSaved = new Schedule(1, "London", "Glasgow", LocalTime.of(9, 10));
-		Schedule flightUpdate = new Schedule("London", "Belfast", LocalTime.of(10, 15));
-		Schedule actualFlightUpdate = new Schedule(1, "London", "Belfast", LocalTime.of(10, 15));
+		Schedule flightUpdate = new Schedule("London", "Belfast", LocalTime.of(7, 25));
+		Schedule actualFlightUpdate = new Schedule(1, "London", "Belfast", LocalTime.of(7, 25));
 		// When
 		Mockito.when(this.repo.findById(flightNum)).thenReturn(Optional.of(flightSaved));
-		Mockito.when(this.repo.save(actualFlightUpdate)).thenReturn(actualFlightUpdate);
+		Mockito.when(this.repo.save(flightUpdate)).thenReturn(actualFlightUpdate);
 		// Then
-		assertThat(this.service.updateSchedule(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
+		Assertions.assertThat(this.service.updateSchedule(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyInt());
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Schedule.class));
 	}
 
+	
+	/* TEST FOR UPDATE DELEYAD FLIGHT
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
 	void updateDelayedFlightTest() {
 		// Given
@@ -92,14 +117,19 @@ public class ScheduleServiceUnitTest {
 		Schedule actualFlightUpdate = new Schedule(1, "London", "Glasgow", LocalTime.of(10, 15));
 		// When
 		Mockito.when(this.repo.findById(flightNum)).thenReturn(Optional.of(flightSaved));
-		Mockito.when(this.repo.save(actualFlightUpdate)).thenReturn(actualFlightUpdate);
+		Mockito.when(this.repo.save(flightUpdate)).thenReturn(actualFlightUpdate);
 		// Then
-		assertThat(this.service.updateSchedule(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
+		Assertions.assertThat(this.service.updateDelayedFlight(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyInt());
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Schedule.class));
 	}
 	
+	
+	/* TEST FOR DELETE 
+	 * this test checks whether the method behaves in the expected way
+	 * no real entries are created as mock objects are used
+	 */
 	@Test
 	void deleteTest() {
 		// Given
