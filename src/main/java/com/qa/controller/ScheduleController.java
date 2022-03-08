@@ -18,12 +18,12 @@ import com.qa.entity.Schedule;
 import com.qa.service.ScheduleService;
 
 @RestController
-public class Controller {
+public class ScheduleController {
 	
 	private ScheduleService service;
 	
 	@Autowired
-	public Controller(ScheduleService service) {
+	public ScheduleController(ScheduleService service) {
 		this.service = service;
 	}
 	
