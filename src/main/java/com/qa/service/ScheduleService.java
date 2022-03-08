@@ -35,7 +35,7 @@ public class ScheduleService {
 	public List<Schedule> getAllFlights() {
 		return this.repo.findAll();
 	}
-
+        
 	
 	/* get by flightNum
 	 * this method returns a specific flight when searched using flight
