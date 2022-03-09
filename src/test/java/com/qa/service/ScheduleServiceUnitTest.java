@@ -95,7 +95,7 @@ public class ScheduleServiceUnitTest {
 		Schedule actualFlightUpdate = new Schedule(1, "London", "Belfast", LocalTime.of(7, 25));
 		// When
 		Mockito.when(this.repo.findById(flightNum)).thenReturn(Optional.of(flightSaved));
-		Mockito.when(this.repo.save(flightUpdate)).thenReturn(actualFlightUpdate);
+		Mockito.when(this.repo.save(actualFlightUpdate)).thenReturn(actualFlightUpdate);
 		// Then
 		Assertions.assertThat(this.service.updateSchedule(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
 		// Verify
@@ -117,7 +117,7 @@ public class ScheduleServiceUnitTest {
 		Schedule actualFlightUpdate = new Schedule(1, "London", "Glasgow", LocalTime.of(10, 15));
 		// When
 		Mockito.when(this.repo.findById(flightNum)).thenReturn(Optional.of(flightSaved));
-		Mockito.when(this.repo.save(flightUpdate)).thenReturn(actualFlightUpdate);
+		Mockito.when(this.repo.save(actualFlightUpdate)).thenReturn(actualFlightUpdate);
 		// Then
 		Assertions.assertThat(this.service.updateDelayedFlight(flightNum, flightUpdate)).isEqualTo(actualFlightUpdate);
 		// Verify

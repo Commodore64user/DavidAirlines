@@ -1,29 +1,35 @@
 package com.qa.entity;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.qa.utils.RandomString;
+
+
 
 @Entity
-public class Passangers {
+public class Passengers  {
 	
 	@Id
-	RandomString reservation = new RandomString(8, ThreadLocalRandom.current());
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
 
+	private String reservation; // = new RandomString(8);
 	private String firstName;
 	private String lastName;
 	private String passport;
 	private String email;
 	private boolean premium;
 	
-	public Passangers() {}
+	public Passengers() {}
 
-	public Passangers(RandomString reservation, String firstName, String lastName, String passport, String email,
+	public Passengers( int id, 
+			String reservation, String firstName, String lastName, String passport, String email,
 			boolean premium) {
 		super();
+		this.id = id;
 		this.reservation = reservation;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -32,20 +38,32 @@ public class Passangers {
 		this.premium = premium;
 	}
 
-	public Passangers(String firstName, String lastName, String passport, String email, boolean premium) {
+	public Passengers( String reservation, 
+			String firstName, String lastName, String passport, String email, boolean premium) {
 		super();
+		this.reservation = reservation;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.passport = passport;
 		this.email = email;
 		this.premium = premium;
 	}
+	
+	
 
-	public RandomString getReservation() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getReservation() {
 		return reservation;
 	}
 
-	public void setReservation(RandomString reservation) {
+	public void setReservation(String reservation) {
 		this.reservation = reservation;
 	}
 
@@ -89,11 +107,15 @@ public class Passangers {
 		this.premium = premium;
 	}
 
+	
+	
 	@Override
 	public String toString() {
-		return "Passangers [reservation=" + reservation + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", passport=" + passport + ", email=" + email + ", premium=" + premium + "]";
+		return "Passangers [id=" + id + ", reservation=" + reservation + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", passport=" + passport + ", email=" + email + ", premium=" + premium + "]";
 	}
+
+
 	
 	
 	
