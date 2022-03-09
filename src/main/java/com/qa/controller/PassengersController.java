@@ -44,13 +44,22 @@ public class PassengersController {
 	}
 	
 	
+	
+	
+	@GetMapping("/getByReservation/{reservation}")
+	public ResponseEntity<Passengers> getByReservation(@PathVariable String reservation) {
+		return new ResponseEntity<>(this.service.getByReservation(reservation), HttpStatus.OK);
+	}
+	
+	
+	
 	@PutMapping("/updatePassenger/{id}")
 	public ResponseEntity<Passengers> updatePassenger(@PathVariable Integer id, @RequestBody Passengers passenger) {
 		return new ResponseEntity<Passengers>(this.service.updatePassenger(id, passenger), HttpStatus.ACCEPTED);
 	}
 	
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteReservation/{id}")
 	public ResponseEntity<Boolean> deletePassenger(@PathVariable Integer id) {
 		boolean hasDeleted = this.service.deletePassenger(id);
 		if (hasDeleted) {

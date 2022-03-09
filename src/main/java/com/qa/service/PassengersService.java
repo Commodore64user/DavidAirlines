@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.qa.entity.Passengers;
 import com.qa.repo.PassengersRepo;
+import com.qa.utils.RandomString;
 
 @Service
 public class PassengersService {
@@ -23,8 +24,11 @@ public class PassengersService {
 	
 	/* create
 	 * this method creates a new [reservation] entry in the database
+	 * and  a random string for variable reservation 
 	 */
 	public Passengers createReservation(Passengers passenger) {
+		RandomString random = new RandomString(8);
+		passenger.setReservation(random.nextString());
 		return this.repo.save(passenger);
 	}
 	
@@ -51,13 +55,22 @@ public class PassengersService {
 	}
 	
 	
+	/* get by reservation
+	 * this method returns a specific passenger when searched using flight
+	 * number, if said flight does not exist, an exception is thrown
+	 */
+	public Passengers getByReservation(String reservation) {
+		return this.repo.findPassengersByReservation(reservation);
+	}
+	
+	
+	
 	/* update ALL fields
 	 * this method updates ALL fields in a passenger entry, if no data is given
 	 * the method will populate empty fields with null or default values depending on data type
 	 */	
 	public Passengers updatePassenger(Integer id, Passengers passenger) {
 		Passengers foundPassenger = this.getById(id);
-		foundPassenger.setReservation(passenger.getReservation());
 		foundPassenger.setFirstName(passenger.getFirstName());
 		foundPassenger.setLastName(passenger.getLastName());
 		foundPassenger.setPassport(passenger.getPassport());
