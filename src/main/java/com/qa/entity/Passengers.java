@@ -7,14 +7,15 @@ import javax.persistence.Id;
 
 
 
+
 @Entity
-public class Passengers {
+public class Passengers  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
+
 	private String reservation; // = new RandomString(8);
 	private String firstName;
 	private String lastName;
@@ -24,7 +25,8 @@ public class Passengers {
 	
 	public Passengers() {}
 
-	public Passengers(int id, String reservation, String firstName, String lastName, String passport, String email,
+	public Passengers( int id, 
+			String reservation, String firstName, String lastName, String passport, String email,
 			boolean premium) {
 		super();
 		this.id = id;
@@ -36,7 +38,8 @@ public class Passengers {
 		this.premium = premium;
 	}
 
-	public Passengers(String reservation, String firstName, String lastName, String passport, String email, boolean premium) {
+	public Passengers( String reservation, 
+			String firstName, String lastName, String passport, String email, boolean premium) {
 		super();
 		this.reservation = reservation;
 		this.firstName = firstName;
@@ -104,6 +107,8 @@ public class Passengers {
 		this.premium = premium;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Passangers [id=" + id + ", reservation=" + reservation + ", firstName=" + firstName + ", lastName="

@@ -1,14 +1,15 @@
 package com.qa.utils;
 
 import java.security.SecureRandom;
-import java.util.Locale;
+//import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
+
 
 public class RandomString {
 
     /**
-     * Generate a random string.
+     * Generate a random string method.
      */
     public String nextString() {
         for (int idx = 0; idx < buf.length; ++idx)
@@ -39,14 +40,14 @@ public class RandomString {
     }
 
     /**
-     * Create an alphanumeric string generator.
+     * Create an alphanumeric string constructor.
      */
     public RandomString(int length, Random random) {
         this(length, random, alphanum);
     }
 
     /**
-     * Create an alphanumeric strings from a secure generator.
+     * Create an alphanumeric strings from a secure constructor.
      */
     public RandomString(int length) {
         this(length, new SecureRandom());
@@ -58,5 +59,9 @@ public class RandomString {
     public RandomString() {
         this(21);
     }
+
+
+    
+
 
 }
