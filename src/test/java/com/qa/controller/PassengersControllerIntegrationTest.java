@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +16,21 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.entity.Schedule;
+import com.qa.entity.Passengers;
 
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-public class ScheduleControllerIntegrationTest {
-
+public class PassengersControllerIntegrationTest {
+	
+	
 	@Autowired
 	private MockMvc mvc;
 	
@@ -36,38 +38,40 @@ public class ScheduleControllerIntegrationTest {
 	private ObjectMapper mapper;
 	
 	@Test
-	void createFlightTest() throws Exception {
+	void createReservationTest() throws Exception {
 		//Given
-		Schedule newFlight = new Schedule("London", "Belfast", LocalTime.of(07, 15));
-		String newFlightJSON = this.mapper.writeValueAsString(newFlight);
+		Passengers newReservation = new Passengers("JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
+		String newReservationJSON = this.mapper.writeValueAsString(newReservation);
 		
-		Schedule savedFlight = new Schedule(1, "London", "Belfast", LocalTime.of(07, 15));
-		String savedFlightJSON = this.mapper.writeValueAsString(savedFlight);
+		Passengers savedReservation = new Passengers(1, "JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
+		String savedReservationJSON = this.mapper.writeValueAsString(savedReservation);
 		//When
-		RequestBuilder request = post("/createFlight").contentType(MediaType.APPLICATION_JSON).content(newFlightJSON);
+		RequestBuilder request = post("/createFlight").contentType(MediaType.APPLICATION_JSON).content(newReservationJSON);
 		
 		ResultMatcher responseStatus = status().isCreated();
-		ResultMatcher responseContent = content().json(savedFlightJSON);
+		ResultMatcher responseContent = content().json(savedReservationJSON);
 		
 		//Then
 		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
 	}
+
 	
 	@Test
-	void getAllFlights() throws Exception {
-		List<Schedule> schedule = new ArrayList<>();
-		schedule.add(new Schedule("London", "Belfast", LocalTime.of(10, 50)));
-		schedule.add(new Schedule("Aberdeen", "Manchester", LocalTime.of(23, 00)));
-		schedule.add(new Schedule("Cardiff", "Dublin", LocalTime.of(12, 30)));
+	void getPassengersTest() throws Exception {
+		List<Passengers> passengers = new ArrayList<>();
+		passengers.add(new Passengers("BTZ3ZNZ8", "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false));
+		passengers.add(new Passengers("JNBK675U", "Will", "Smith", "GB244928", "will@smith.co.uk", false));
+		passengers.add(new Passengers("YZESP14C", "Ruby", "Embley", "GB444588", "ruby@thebest.co.uk", true));
 		
-		String savedScheduleJSON = this.mapper.writeValueAsString(schedule);
+		String savedPassengersJSON = this.mapper.writeValueAsString(passengers);
 		
-		RequestBuilder request = get("/getAllFlights");
+		RequestBuilder request = get("/getPassengers");
 		
 		ResultMatcher responseStatus = status().isOk();
-		ResultMatcher responseContent = content().json(savedScheduleJSON);
+		ResultMatcher responseContent = content().json(savedPassengersJSON);
 		
 		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
+		
 	}
 	
 	
@@ -76,5 +80,5 @@ public class ScheduleControllerIntegrationTest {
 	
 	
 	
-
+	
 }

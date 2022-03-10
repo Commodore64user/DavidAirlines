@@ -35,7 +35,7 @@ public class ScheduleController {
 	
 	
 	@GetMapping("/getAllFlights")
-	public ResponseEntity<List<Schedule>> getAll() {
+	public ResponseEntity<List<Schedule>> getAllFlights() {
 		return new ResponseEntity<List<Schedule>>(this.service.getAllFlights(), HttpStatus.OK);
 	}
 	

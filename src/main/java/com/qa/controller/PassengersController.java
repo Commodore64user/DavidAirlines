@@ -44,8 +44,6 @@ public class PassengersController {
 	}
 	
 	
-	
-	
 	@GetMapping("/getByReservation/{reservation}")
 	public ResponseEntity<Passengers> getByReservation(@PathVariable String reservation) {
 		return new ResponseEntity<>(this.service.getByReservation(reservation), HttpStatus.OK);
