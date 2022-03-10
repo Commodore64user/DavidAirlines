@@ -17,6 +17,7 @@ import com.qa.entity.Passengers;
 import com.qa.service.PassengersService;
 
 @RestController
+//@RequestMapping(path="/passengers")
 public class PassengersController {
 	
 	private PassengersService service;
@@ -57,14 +58,9 @@ public class PassengersController {
 	}
 	
 	
-	@DeleteMapping("/deleteReservation/{id}")
+	@DeleteMapping("/deletePassenger/{id}")
 	public ResponseEntity<Boolean> deletePassenger(@PathVariable Integer id) {
-		boolean hasDeleted = this.service.deletePassenger(id);
-		if (hasDeleted) {
 			return new ResponseEntity<Boolean>(this.service.deletePassenger(id), HttpStatus.ACCEPTED);
-		} else {
-			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.EXPECTATION_FAILED);
-		}
 	}
 
 }

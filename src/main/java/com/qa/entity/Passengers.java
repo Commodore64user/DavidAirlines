@@ -1,5 +1,6 @@
 package com.qa.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,10 @@ public class Passengers  {
 	private int id;
 	
 
-	private String reservation; // = new RandomString(8);
+	private String reservation;
+	@Column(name = "first_name")
 	private String firstName;
+	@Column(name = "last_name")
 	private String lastName;
 	private String passport;
 	private String email;

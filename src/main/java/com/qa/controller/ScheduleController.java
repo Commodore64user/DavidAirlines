@@ -60,12 +60,7 @@ public class ScheduleController {
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Boolean> deleteByFlightNum(@PathVariable Integer id) {
-		boolean hasDeleted = this.service.deleteFlight(id);
-		if (hasDeleted) {
 			return new ResponseEntity<Boolean>(this.service.deleteFlight(id), HttpStatus.ACCEPTED);
-		} else {
-			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.EXPECTATION_FAILED);
-		}
 	}
 
 }
