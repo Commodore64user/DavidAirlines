@@ -74,7 +74,7 @@ public class PassengersServiceUnitTest {
 		// When
 		Mockito.when(this.repo.findPassengersByReservation(reservation)).thenReturn(Optional.of(foundPassenger));
 		// Then
-		assertThat(this.service.getByReservation(reservation).get()).isEqualTo(foundPassenger);
+		assertThat(this.service.getByReservation(reservation)).isEqualTo(foundPassenger);
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).findPassengersByReservation(Mockito.anyString());
 	}
@@ -117,8 +117,6 @@ public class PassengersServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.anyInt());
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(Mockito.anyInt());
 	}
-	
-	
 	
 
 }

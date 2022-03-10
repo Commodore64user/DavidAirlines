@@ -59,10 +59,10 @@ public class PassengersService {
 	 * this method returns a specific passenger when searched using flight
 	 * number, if said flight does not exist, an exception is thrown
 	 */
-	public Optional<Passengers> getByReservation(String reservation) {
+	public Passengers getByReservation(String reservation) {
 		Optional<Passengers> optionalPassenger = this.repo.findPassengersByReservation(reservation);
 		if (optionalPassenger.isPresent()) {
-			return optionalPassenger;
+			return optionalPassenger.get();
 		} else {
 			throw new EntityNotFoundException("Can't find passenger with this reservation");
 		}
