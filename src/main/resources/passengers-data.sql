@@ -1,0 +1,3 @@
+insert into passengers (email, first_name, last_name, passport, premium, reservation) values ('Chaz_Kulas@hotmail.com', 'Chaz', 'Wuckert', 'GB986794', false, 'LT4LG99Y');
+insert into passengers (email, first_name, last_name, passport, premium, reservation) values ('Gerardo10@gmail.com', 'Gerardo', 'Aufderhar', 'GB623977', true, 'H0JBUHPN');
+insert into passengers (email, first_name, last_name, passport, premium, reservation) values ('Marie.Swift23@yahoo.com', 'Marie', 'Swift', 'GB623977', false, 'N5NSQ4XG');

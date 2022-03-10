@@ -35,7 +35,7 @@ public class ScheduleController {
 	
 	
 	@GetMapping("/getAllFlights")
-	public ResponseEntity<List<Schedule>> getAll() {
+	public ResponseEntity<List<Schedule>> getAllFlights() {
 		return new ResponseEntity<List<Schedule>>(this.service.getAllFlights(), HttpStatus.OK);
 	}
 	
@@ -60,12 +60,7 @@ public class ScheduleController {
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Boolean> deleteByFlightNum(@PathVariable Integer id) {
-		boolean hasDeleted = this.service.deleteFlight(id);
-		if (hasDeleted) {
 			return new ResponseEntity<Boolean>(this.service.deleteFlight(id), HttpStatus.ACCEPTED);
-		} else {
-			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.EXPECTATION_FAILED);
-		}
 	}
 
 }
