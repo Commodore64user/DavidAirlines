@@ -18,14 +18,23 @@ One particular challenge I found was testing my create method for the passenger 
 ### Postman and MySQL database (from terminal)
 
 ![Image 2](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2010.00.42.png)
+
 ![Image 3](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2010.01.30.png)
+
 ![Image 4](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.18.22.png)
+
 ![Image 5](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.18.45.png)
+
 ![Image 6](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.19.08.png)
+
 ![Image 7](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.19.44.png)
+
 ![Image 8](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.01.png)
+
 ![Image 9](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.25.png)
+
 ![Image 10](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.38.png)
+
 ![Image 11](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.22.50.png)
 
 A link to my Jira board can be found [here](https://daveabc02.atlassian.net/jira/software/projects/QAPROJECT/boards/2)
