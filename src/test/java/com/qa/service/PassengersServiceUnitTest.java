@@ -32,14 +32,16 @@ public class PassengersServiceUnitTest {
 	@Test
 	void createReservationTest() {
 		// Given
-		Passengers passengertToSave = new Passengers("BTZ3ZNZ8", "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false);
-		Passengers passengertSaved = new Passengers(1, "BTZ3ZNZ8", "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false);
+		Passengers passengertToSave = new Passengers("BTZ3ZNZ8", 1, "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false);
+		Passengers passengertSaved = new Passengers(1, "BTZ3ZNZ8", 1, "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false);
 		// When
+		Mockito.when(this.repo.totalFlights()).thenReturn(1);
 		Mockito.when(this.repo.save(passengertToSave)).thenReturn(passengertSaved);
 		// Then
 		assertThat(this.service.createReservation(passengertToSave)).isEqualTo(passengertSaved);
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(Passengers.class));
+		Mockito.verify(this.repo, Mockito.times(1)).totalFlights();
 	}
 	
 	
@@ -51,9 +53,9 @@ public class PassengersServiceUnitTest {
 	void getPassengersTest() {
 		// Given
 		List<Passengers> passengers = new ArrayList<>();
-		passengers.add(new Passengers("BTZ3ZNZ8", "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false));
-		passengers.add(new Passengers("JNBK675U", "Will", "Smith", "GB244928", "will@smith.co.uk", false));
-		passengers.add(new Passengers("YZESP14C", "Ruby", "Embley", "GB444588", "ruby@thebest.co.uk", true));
+		passengers.add(new Passengers("BTZ3ZNZ8", 1, "Aaron", "Smith", "GB439275", "aaron@smith.co.uk", false));
+		passengers.add(new Passengers("JNBK675U", 1, "Will", "Smith", "GB244928", "will@smith.co.uk", false));
+		passengers.add(new Passengers("YZESP14C", 1, "Ruby", "Embley", "GB444588", "ruby@thebest.co.uk", true));
 		// When
 		Mockito.when(this.repo.findAll()).thenReturn(passengers);
 		// Then
@@ -70,13 +72,28 @@ public class PassengersServiceUnitTest {
 	void getByReservationTest() {
 		// Given
 		String reservation = "YZESP14C";
-		Passengers foundPassenger = new Passengers(1, "YZESP14C", "Richard", "Mansworth", "GB472749", "richa@qa.co.uk", false);
+		Passengers foundPassenger = new Passengers(1, "YZESP14C", 1, "Richard", "Mansworth", "GB472749", "richa@qa.co.uk", false);
 		// When
 		Mockito.when(this.repo.findPassengersByReservation(reservation)).thenReturn(Optional.of(foundPassenger));
 		// Then
 		assertThat(this.service.getByReservation(reservation)).isEqualTo(foundPassenger);
 		// Verify
 		Mockito.verify(this.repo, Mockito.times(1)).findPassengersByReservation(Mockito.anyString());
+	}
+	
+	@Test
+	void getPassengersByFlightTest() {
+		// Given
+		int flight = 1;
+		List<Passengers> passengers = new ArrayList<>();
+		passengers.add(new Passengers("BTZ3ZNZ8", 1, "Louis", "XV", "GB439275", "louis@xv.co.uk", false));
+		passengers.add(new Passengers("JNBK675U", 1, "Bob", "Builder", "GB244928", "bob@builder.co.uk", false));
+		// When
+		Mockito.when(this.repo.findPassengersByBookedFlight(flight)).thenReturn(passengers);
+		// Then
+		assertThat(this.service.getPassengersByFlight(flight)).isEqualTo(passengers);
+		// Verify
+		Mockito.verify(this.repo, Mockito.times(1)).findPassengersByBookedFlight(Mockito.anyInt());
 	}
 	
 	
@@ -88,9 +105,9 @@ public class PassengersServiceUnitTest {
 	void updatePassengerTest() {
 		// Given
 		int id = 1;
-		Passengers reservationSaved = new Passengers(1, "JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
-		Passengers reservationUpdate = new Passengers("JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", true);
-		Passengers actualReservationUpdate = new Passengers(1, "JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", true);
+		Passengers reservationSaved = new Passengers(1, "JNBK675U", 1, "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
+		Passengers reservationUpdate = new Passengers("JNBK675U", 1, "Ben", "Dover", "GB244928", "ben@dover.co.uk", true);
+		Passengers actualReservationUpdate = new Passengers(1, "JNBK675U", 1, "Ben", "Dover", "GB244928", "ben@dover.co.uk", true);
 		// When
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(reservationSaved));
 		Mockito.when(this.repo.save(actualReservationUpdate)).thenReturn(actualReservationUpdate);

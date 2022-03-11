@@ -18,10 +18,14 @@ public class Passengers  {
 	
 
 	private String reservation;
+	private int bookedFlight;
+	
 	@Column(name = "first_name")
 	private String firstName;
+	
 	@Column(name = "last_name")
 	private String lastName;
+	
 	private String passport;
 	private String email;
 	private boolean premium;
@@ -29,11 +33,12 @@ public class Passengers  {
 	public Passengers() {}
 
 	public Passengers( int id, 
-			String reservation, String firstName, String lastName, String passport, String email,
+			String reservation, int bookedFlight, String firstName, String lastName, String passport, String email,
 			boolean premium) {
 		super();
 		this.id = id;
 		this.reservation = reservation;
+		this.bookedFlight = bookedFlight;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.passport = passport;
@@ -41,10 +46,11 @@ public class Passengers  {
 		this.premium = premium;
 	}
 
-	public Passengers( String reservation, 
+	public Passengers( String reservation, int bookedFlight,
 			String firstName, String lastName, String passport, String email, boolean premium) {
 		super();
 		this.reservation = reservation;
+		this.bookedFlight = bookedFlight;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.passport = passport;
@@ -68,6 +74,14 @@ public class Passengers  {
 
 	public void setReservation(String reservation) {
 		this.reservation = reservation;
+	}
+	
+	public int getBookedFlight() {
+		return bookedFlight;
+	}
+
+	public void setBookedFlight(int bookedFlight) {
+		this.bookedFlight = bookedFlight;
 	}
 
 	public String getFirstName() {
