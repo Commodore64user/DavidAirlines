@@ -12,4 +12,4 @@ One particular challenge I found was testing my create method for the passenger 
 
 ![Postman] (https:// )
 
-A link ti Jira board can be found [here](https://daveabc02.atlassian.net/jira/software/projects/QAPROJECT/boards/2)
+A link to my Jira board can be found [here](https://daveabc02.atlassian.net/jira/software/projects/QAPROJECT/boards/2)
