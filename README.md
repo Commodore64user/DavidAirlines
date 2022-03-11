@@ -1,4 +1,6 @@
-# DavidAirlines
+# DavidAirlines README
+
+### Why are we doing this? (and other qs)
 
 The main objective of this project is to utilise all the concepts and technologies learnt during the Software Development Digital Bootcamp. Some of the tools utilised in the project include (but are not limited to) Java, Spring, JUnit, MySQL, Postman, GitHub. 
 
