@@ -50,6 +50,10 @@ public class PassengersController {
 		return new ResponseEntity<>(this.service.getByReservation(reservation), HttpStatus.OK);
 	}
 	
+	@GetMapping("/getPassengersByFlight/{flight}")
+	public ResponseEntity<List<Passengers>> getPassengersByFlight(@PathVariable int flight) {
+		return new ResponseEntity<List<Passengers>>(this.service.getPassengersByFlight(flight), HttpStatus.OK);
+	}
 	
 	
 	@PutMapping("/updatePassenger/{id}")

@@ -28,8 +28,8 @@ import com.qa.entity.Passengers;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@Sql(scripts = { "classpath:passengers-schema.sql",
-		"classpath:passengers-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:passengers-schema.sql", "classpath:passengers-data.sql", "classpath:schedule-schema.sql",
+		"classpath:schedule-data2.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @AutoConfigureMockMvc
 public class PassengersControllerIntegrationTest {
 
@@ -42,11 +42,8 @@ public class PassengersControllerIntegrationTest {
 	@Test
 	void createReservationTest() throws Exception {
 		// Given
-		Passengers newReservation = new Passengers("JNBK675U", "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
+		Passengers newReservation = new Passengers("JNBK675U", 1, "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
 		String newReservationJSON = this.mapper.writeValueAsString(newReservation);
-
-//		Passengers savedReservation = new Passengers(4, "**RANDOM**", "Ben", "Dover", "GB244928", "ben@dover.co.uk", false);
-//		String savedReservationJSON = this.mapper.writeValueAsString(savedReservation);
 
 		// When
 		RequestBuilder request = post("/createReservation").contentType(MediaType.APPLICATION_JSON)
@@ -67,9 +64,12 @@ public class PassengersControllerIntegrationTest {
 	void getPassengersTest() throws Exception {
 		// Given
 		List<Passengers> passengers = new ArrayList<>();
-		passengers.add(new Passengers(1, "LT4LG99Y", "Chaz", "Wuckert", "GB986794", "Chaz_Kulas@hotmail.com", false));
-		passengers.add(new Passengers(2, "H0JBUHPN", "Gerardo", "Aufderhar", "GB623977", "Gerardo10@gmail.com", true));
-		passengers.add(new Passengers(3, "N5NSQ4XG", "Marie", "Swift", "GB623977", "Marie.Swift23@yahoo.com", false));
+		passengers
+				.add(new Passengers(1, "LT4LG99Y", 3, "Chaz", "Wuckert", "GB986794", "Chaz_Kulas@hotmail.com", false));
+		passengers
+				.add(new Passengers(2, "H0JBUHPN", 2, "Gerardo", "Aufderhar", "GB623977", "Gerardo10@gmail.com", true));
+		passengers
+				.add(new Passengers(3, "N5NSQ4XG", 3, "Marie", "Swift", "GB623977", "Marie.Swift23@yahoo.com", false));
 
 		String savedPassengersJSON = this.mapper.writeValueAsString(passengers);
 
@@ -81,13 +81,12 @@ public class PassengersControllerIntegrationTest {
 
 		// Then
 		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
-
 	}
 
 	@Test
 	void getByIdTest() throws Exception {
 		// Given
-		Passengers savedReservation = new Passengers(2, "H0JBUHPN", "Gerardo", "Aufderhar", "GB623977",
+		Passengers savedReservation = new Passengers(2, "H0JBUHPN", 2, "Gerardo", "Aufderhar", "GB623977",
 				"Gerardo10@gmail.com", true);
 		String savedReservationJSON = this.mapper.writeValueAsString(savedReservation);
 		// When
@@ -102,7 +101,7 @@ public class PassengersControllerIntegrationTest {
 	@Test
 	void getByReservationTest() throws Exception {
 		// Given
-		Passengers savedReservation = new Passengers(2, "H0JBUHPN", "Gerardo", "Aufderhar", "GB623977",
+		Passengers savedReservation = new Passengers(2, "H0JBUHPN", 2, "Gerardo", "Aufderhar", "GB623977",
 				"Gerardo10@gmail.com", true);
 		String savedReservationJSON = this.mapper.writeValueAsString(savedReservation);
 		// When
@@ -115,8 +114,29 @@ public class PassengersControllerIntegrationTest {
 	}
 
 	@Test
+	void getPassengersByFlightTest() throws Exception {
+		// Given
+		List<Passengers> passengers = new ArrayList<>();
+		passengers
+				.add(new Passengers(1, "LT4LG99Y", 3, "Chaz", "Wuckert", "GB986794", "Chaz_Kulas@hotmail.com", false));
+		passengers
+				.add(new Passengers(3, "N5NSQ4XG", 3, "Marie", "Swift", "GB623977", "Marie.Swift23@yahoo.com", false));
+
+		String savedPassengersJSON = this.mapper.writeValueAsString(passengers);
+
+		// When
+		RequestBuilder request = get("/getPassengersByFlight/3");
+
+		ResultMatcher responseStatus = status().isOk();
+		ResultMatcher responseContent = content().json(savedPassengersJSON);
+
+		// Then
+		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
+	}
+
+	@Test
 	void updatePassenger() throws Exception {
-		Passengers updatedReservation = new Passengers(3, "N5NSQ4XG", "Marie", "Swift", "GB623977",
+		Passengers updatedReservation = new Passengers(3, "N5NSQ4XG", 3, "Marie", "Swift", "GB623977",
 				"Marie.Swift23@yahoo.com", true);
 		String updatedReservationJSON = this.mapper.writeValueAsString(updatedReservation);
 		// When
@@ -129,10 +149,10 @@ public class PassengersControllerIntegrationTest {
 		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
 	}
 
-	@Test 
+	@Test
 	void deletePassengerTest() throws Exception {
 		ResultActions cond = this.mvc.perform(delete("/deletePassenger/2"));
-				cond.andExpect(status().isAccepted());
+		cond.andExpect(status().isAccepted());
 	}
 
 }

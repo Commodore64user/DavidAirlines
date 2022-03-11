@@ -11,7 +11,7 @@ public class Schedule {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int flingtNum;
+	private int flightNum;
 	
 	
 	private String origin;
@@ -29,18 +29,18 @@ public class Schedule {
 	
 	public Schedule(int flightNum, String origin, String destination, LocalTime departure) {
 		super();
-		this.flingtNum = flightNum;
+		this.flightNum = flightNum;
 		this.origin = origin;
 		this.destination = destination;
 		this.departure = departure;
 	}
 	
 	
-	public int getFlingtNum() {
-		return flingtNum;
+	public int getFlightNum() {
+		return flightNum;
 	}
-	public void setFlingtNum(int flingtNum) {
-		this.flingtNum = flingtNum;
+	public void setFlightNum(int flightNum) {
+		this.flightNum = flightNum;
 	}
 	public String getOrigin() {
 		return origin;
@@ -63,7 +63,7 @@ public class Schedule {
 	}
 	@Override
 	public String toString() {
-		return "Schedule [flingtNum=" + flingtNum + ", origin=" + origin + ", destination=" + destination
+		return "Schedule [flightNum=" + flightNum + ", origin=" + origin + ", destination=" + destination
 				+ ", departure=" + departure + "]";
 	}
 
@@ -73,7 +73,7 @@ public class Schedule {
 		int result = 1;
 		result = prime * result + ((departure == null) ? 0 : departure.hashCode());
 		result = prime * result + ((destination == null) ? 0 : destination.hashCode());
-		result = prime * result + flingtNum;
+		result = prime * result + flightNum;
 		result = prime * result + ((origin == null) ? 0 : origin.hashCode());
 		return result;
 	}
@@ -97,7 +97,7 @@ public class Schedule {
 				return false;
 		} else if (!destination.equals(other.destination))
 			return false;
-		if (flingtNum != other.flingtNum)
+		if (flightNum != other.flightNum)
 			return false;
 		if (origin == null) {
 			if (other.origin != null)
