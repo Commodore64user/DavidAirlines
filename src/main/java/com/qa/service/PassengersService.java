@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.entity.Passengers;
+import com.qa.extensions.FlightsNotFoundException;
 import com.qa.repo.PassengersRepo;
 import com.qa.utils.Booking;
 import com.qa.utils.RandomString;
@@ -37,7 +38,7 @@ public class PassengersService {
 		if(scheduledFlights >= 1) {
 			passenger.setBookedFlight(b.genBooking( scheduledFlights ));
 		} else {
-			throw new EntityNotFoundException("Can't create reservation as no flights are available");
+			throw new FlightsNotFoundException("Can't create reservation as no flights are available");
 		}
 		
 		return this.repo.save(passenger);
