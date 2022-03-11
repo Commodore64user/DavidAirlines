@@ -8,4 +8,6 @@ import com.qa.entity.Schedule;
 @Repository
 public interface ScheduleRepo extends JpaRepository<Schedule, Integer>{
 
+//	@Query(value = "SELECT COUNT(*) FROM schedule;", nativeQuery = true)
+//	int totalFlights();
 }

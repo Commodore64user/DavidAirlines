@@ -32,7 +32,7 @@ public class ScheduleService {
 	/* get all
 	 * this method returns all [flights] entries in the database
 	 */
-	public List<Schedule> getAllFlights() {
+	public final List<Schedule> getAllFlights() {
 		return this.repo.findAll();
 	}
         
