@@ -17,7 +17,8 @@ work every day first focusing on the chasis of the application and the adding ex
 ### Responsibility:
 I am responsible for mitigating the risk
 
-##Case 2:  
+
+## Case 2:  
 
 ### Description
 I am unable to create the application and to link it to the database.
