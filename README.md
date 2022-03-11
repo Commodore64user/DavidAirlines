@@ -17,24 +17,25 @@ One particular challenge I found was testing my create method for the passenger 
 
 ### Postman and MySQL database (from terminal)
 
+##### Postman pushing data to database:
 ![Image 2](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2010.00.42.png)
-
+##### Showing passengers:
 ![Image 3](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2010.01.30.png)
-
+##### Creating a flight entry:
 ![Image 4](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.18.22.png)
-
+##### Get all flights:
 ![Image 5](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.18.45.png)
-
+##### Update time to delayed flight:
 ![Image 6](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.19.08.png)
-
+##### create reservation:
 ![Image 7](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.19.44.png)
-
+##### Get all reservations:
 ![Image 8](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.01.png)
-
+##### Get by reservation:
 ![Image 9](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.25.png)
-
+##### Get passengers by flight
 ![Image 10](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.20.38.png)
-
+##### Database exists after app is not running:
 ![Image 11](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2013.22.50.png)
 
 A link to my Jira board can be found [here](https://daveabc02.atlassian.net/jira/software/projects/QAPROJECT/boards/2)
