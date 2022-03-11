@@ -2,7 +2,6 @@ package com.qa.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.qa.entity.Passengers;
-import com.qa.entity.Schedule;
 import com.qa.repo.PassengersRepo;
 
 @SpringBootTest

@@ -126,7 +126,6 @@ public class ScheduleControllerIntegrationTest {
 	@Test 
 	void deleteByFlightNumTest() throws Exception {
 		this.mvc.perform(delete("/delete/1")).andExpect(status().isAccepted());
-		this.mvc.perform(delete("/delete/1")).andExpect(status().isAccepted());
 	}
 	
 	

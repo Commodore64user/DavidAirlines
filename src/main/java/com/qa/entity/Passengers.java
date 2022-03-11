@@ -59,31 +59,6 @@ public class Passengers  {
 	}
 	
 	
-//	public Passengers( int id, 
-//			String reservation, String firstName, String lastName, String passport, String email,
-//			boolean premium) {
-//		super();
-//		this.id = id;
-//		this.reservation = reservation;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.passport = passport;
-//		this.email = email;
-//		this.premium = premium;
-//	}
-//
-//	public Passengers( String reservation, 
-//			String firstName, String lastName, String passport, String email, boolean premium) {
-//		super();
-//		this.reservation = reservation;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.passport = passport;
-//		this.email = email;
-//		this.premium = premium;
-//	}
-	
-	
 
 	public int getId() {
 		return id;
