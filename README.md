@@ -14,8 +14,11 @@ One particular challenge I found was testing my create method for the passenger 
 
 A link to my Jira board can be found [here](https://daveabc02.atlassian.net/jira/software/projects/QAPROJECT/boards/2)
 
-### Test Coverage:
+### Test:
+##### Coverage:
 ![Test Coverage](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2014.02.22.png)
+##### Tests:
+![Tests](https://github.com/Commodore64user/DavidAirlines/blob/Commodore64user-readme/Screenshots/Screenshot%202022-03-11%20at%2014.42.23.png)
 
 ### Postman and MySQL database (from terminal)
 
