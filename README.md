@@ -4,7 +4,7 @@
 
 The main objective of this project is to utilise all the concepts and technologies learnt during the Software Development Digital Bootcamp. Some of the tools utilised in the project include (but are not limited to) Java, Spring, JUnit, MySQL, Postman, GitHub. 
 
-We were expected to write a full CRUD application (including testing) in the span of five days, I expected this to be a difficult yet achievable task as it was my first time creating a whole app from the ground app, or the back end at least.
+We were expected to write a full CRUD application (including testing) in the span of five days, I expected this to be a difficult yet achievable task as it was my first time creating a whole app from the ground up, or the back end at least.
 
 My exceptions coming in were not to high as I thought I would soon hit walls from which it would take me a long time to get out of, and given the limited time to complete the task I originally focused mainly on completing the bare essentials, but as I went along found I could reel out a bit and ended up adding a couple small classes to the project.
 
